@@ -1,0 +1,40 @@
+export class CotizacionModel
+{idcotizacion : number;
+numerocotizacion : number;
+nombrecotizacion : string;
+titulo : string;
+idusuario : number;
+idcliente : number;
+fechacotizacion:Date = new Date();
+tipocotizacion : number;
+idoficina : number;
+subtotal : decimal(10,0);
+descuento : decimal(10,0);
+total : decimal(10,0);
+idmoneda : number;
+descripcion : string;
+idestadocotizacion : number;
+pagado : decimal(10,0);
+cambio : decimal(10,0);
+idusuarioresponsable : number;
+idaperturacierrecaja : number;
+constructor() {
+this.idcotizacion = 0;
+this.numerocotizacion = 0;
+this.nombrecotizacion = '';
+this.titulo = '';
+this.idusuario = 0;
+this.idcliente = 0;
+this.tipocotizacion = 0;
+this.idoficina = 0;
+this.subtotal = decimal(10,0);
+this.descuento = decimal(10,0);
+this.total = decimal(10,0);
+this.idmoneda = 0;
+this.descripcion = '';
+this.idestadocotizacion = 0;
+this.pagado = decimal(10,0);
+this.cambio = decimal(10,0);
+this.idusuarioresponsable = 0;
+this.idaperturacierrecaja = 0;
+}}

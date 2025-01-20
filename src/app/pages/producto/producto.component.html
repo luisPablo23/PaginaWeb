@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h1>Productos</h1>
+  </div>
+  <div class="col-sm-4 text-end">
+    <h1>
+      <button routerLink="/productogestion/0" class="btn btn-primary">
+        <i class="fa fa-plus"></i>
+        Agregar
+      </button>
+    </h1>
+  </div>
+</div>  
+<div *ngIf="!cargando && productos.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">No hay registros</h4>
+  <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+  </p>
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+      <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+      Espere por favor
+  </p>
+</div>
+<div class="row mt-4">
+  <div *ngFor="let producto of productos" class="col-sm-4 mb-4">
+    <div class="card">
+      <img 
+        [src]="producto.imagen" 
+        class="card-img-top" 
+        [alt]="producto.nombreproducto" 
+        onerror="this.src='assets/img/default.jpg'" 
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">{{ producto.nombreproducto }}</h5>
+        <p class="card-text text-center">Precio: ${{ producto.montoventa }}</p>
+        <div class="text-center">
+          <button 
+            class="btn btn-primary" 
+            [routerLink]="['/productogestion', producto.idproducto ]">
+            Editar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

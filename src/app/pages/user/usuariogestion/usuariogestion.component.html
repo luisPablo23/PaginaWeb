@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-sm-8">
+      <h1>Detalle del Usuario</h1>
+  </div>
+  <div class="col-sm-4 text-right">
+      <h1> <button class="btn btn-danger" routerLink="/usuario">
+              <i class="fa fa-arrow-left"></i>
+              Regresar
+          </button></h1>
+  </div>
+</div>
+
+<form  autocomplete="off" (ngSubmit)="guardar( forma )" #forma="ngForm">
+  <div *ngIf="soloroles == '0'">
+  <div class="row g-4">
+      <div class="col-md">
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" [(ngModel)]="usuario.nombreusuario" name="titulo" required>
+              <label for="nombreusuario">Cuenta</label>
+          </div>
+      </div>
+      <div class="col-md">
+      <div class="form-floating">
+          <select class="form-control" name="idrolusuario" [ngModel]="usuario.idestadousuario" required (change)="changeidestadousuario($event)">
+              <option value="1">HABILITADO</option>
+              <option value="2">DESHABILITADO</option>
+          </select>
+      <label for="nombrerolusuario">Estado</label>
+  </div>
+</div>
+      <div class="col-md">
+          <div class="form-floating mb-3">
+              <input type="password" class="form-control" [(ngModel)]="pass1" name="pass1" required>
+              <label for="pass1">Contraseña</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating">
+              <input type="password" class="form-control" [(ngModel)]="pass2" name="pass2" required>
+              <label for="pass2">Repita su contraseña</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" [(ngModel)]="persona.nit" name="nit" required>
+              <label for="nit">Codigo</label>
+          </div>
+      </div>
+  </div>
+  <div class="row g-3">
+      <div class="col-md">
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" [(ngModel)]="persona.nrodocumento" name="nrodocumento" required>
+              <label for="nombre">Nro CI</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" [(ngModel)]="persona.nombre" name="nombre" required>
+              <label for="nombre">Nombre</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" [(ngModel)]="persona.paterno" name="paterno" required>
+              <label for="paterno">Paterno</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating">
+              <input type="text" class="form-control" [(ngModel)]="persona.materno" name="materno" required>
+              <label for="materno">Materno</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating">
+              <input type="text" class="form-control" [(ngModel)]="persona.celular" name="celular" required>
+              <label for="celular">Celular</label>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div *ngIf="usuario.idusuario> 0" class="row">
+      <div class="col-sm-8">
+          <h1>Roles del usuario : {{usuario.nombreusuario}}</h1>
+      </div>
+      <div class="col-sm-4 text-right">
+          <h1> <button [routerLink]="['/rolusuariogestion', 0, usuario.idusuario]" class="btn btn-primary">
+                  <i class="fa fa-plus"></i>
+                  Agregar
+              </button></h1>
+      </div>
+  </div>
+
+  <div *ngIf="usuario.idusuario> 0" class="table-responsive">
+      <table *ngIf="!cargando && rolusuario.length > 0" class="table mt-3 animated fadeIn faster animated fadeIn faster">
+          <thead class="table-dark">
+              <tr>
+                  <th scope="col">N°</th>
+                  <th scope="col">Rol</th>
+                  <th scope="col">Opciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of rolusuario; let i = index">
+                  <td>{{ item.idrolusuario }} </td>
+                  <td>{{ item.nombrerol}} </td>
+                  <td>
+                      <button class="btn btn-info" [routerLink]="['/usuariogestion', item.idusuario,1 ]">
+                          <i class="fa fa-pencil"></i>
+                      </button>
+
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <br />
+  <div *ngIf="soloroles == '0'" class="form-group row text-center">
+      <div class="col">
+          <button type="submit" class="btn btn-primary w-25">
+              <i class="fa fa-save"></i>
+              Guardar
+          </button>
+      </div>
+  </div>
+</form>

@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-8">
+      <h1>Marcas</h1>
+  </div>
+  <div class="col-sm-4 text-right">
+      <h1> <button routerLink="/marcagestion/0" class="btn btn-primary">
+          <i class="fa fa-plus"></i>
+          Agregar
+        </button></h1>
+  </div>
+</div>
+
+<div class="table-responsive">
+<table *ngIf="!cargando && marcas.length > 0"
+  class="table mt-3 animated fadeIn faster animated fadeIn faster">
+  <thead class="table-dark">
+      <tr>
+          <th scope="col">#</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Editar</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let marca of marcas; let i = index">
+          <td>{{ marca.idmarca }} </td>
+          <td>{{ marca.nombremarca }} </td>
+          <td>
+              <button class="btn btn-info" [routerLink]="['/marcagestion', marca.idmarca ]">
+        <i class="fa fa-pencil"></i>
+      </button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+<div *ngIf="!cargando && marcas.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">No hay registros</h4>
+  <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+  </p>
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+      <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+      Espere por favor
+  </p>
+</div>

@@ -1,0 +1,68 @@
+<div class="row g-2">
+  <div class="col-md">
+      <div class="form-floating">
+          <h1>Plandecuentas</h1>
+      </div>
+  </div>
+  <div class="col-md">
+      <div class="form-floating">
+          <select class="form-control" name="idplandecuenta" [ngModel]="plandecuenta.idtipoplandecuenta" required
+              (change)="change($event)">
+              <option *ngFor="let item of parametrotipolista" [value]="item.valorcampo">
+                  {{ item.descripcion }}
+              </option>
+          </select>
+          <label for="idplandecuenta">Plandecuenta</label>
+      </div>
+  </div>
+
+  <div class="col-md">
+      <div class="form-floating">
+          <h1> <button routerLink="/plandecuentagestion/0" class="btn btn-primary">
+                  <i class="fa fa-plus"></i>
+                  Agregar
+              </button></h1>
+      </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table *ngIf="!cargando && plandecuentas.length > 0"
+      class="table mt-3 animated fadeIn faster animated fadeIn faster">
+      <thead class="table-dark">
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Editar</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let plandecuenta of plandecuentas; let i = index">
+              <td>{{ plandecuenta.idplandecuenta }} </td>
+              <td>{{ plandecuenta.descripcion }} </td>
+              <td>
+                  <button class="btn btn-info" [routerLink]="['/plandecuentagestion', plandecuenta.idplandecuenta ]">
+                      <i class="fa fa-pencil"></i>
+                  </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<div *ngIf="!cargando && plandecuentas.length === 0"
+  class="alert alert-warning text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">No hay registros</h4>
+  <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+  </p>
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+      <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+      Espere por favor
+  </p>
+</div>

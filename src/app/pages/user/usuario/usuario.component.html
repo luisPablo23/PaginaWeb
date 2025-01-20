@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-sm-8">
+      <h1>Usuarios</h1>
+  </div>
+  <div class="col-sm-4 text-right">
+      <h1> <button routerLink="/usuariogestion/0/0" class="btn btn-primary">
+          <i class="fa fa-plus"></i>
+          Agregar
+        </button></h1>
+  </div>
+</div>
+
+<div class="table-responsive">
+<table *ngIf="!cargando && usuarios.length > 0"
+  class="table mt-3 animated fadeIn faster animated fadeIn faster">
+  <thead class="table-dark">
+      <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Cuenta</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Opciones</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let usuario of usuarios; let i = index">
+          <td>{{ usuario.idusuario }} </td>
+          <td>{{ usuario.nombreusuario }} </td>
+          <td>{{ usuario.nombre + ' '+usuario.paterno +' '+usuario.materno }} </td>
+          <td>
+              <button *ngIf="usuario.idestadousuario==1" class="mr-1 btn btn-success">HABILITADO</button>
+              <button *ngIf="usuario.idestadousuario==2" class="mr-1 btn btn-danger">DESHABILITADO</button>
+          </td>
+
+          <td>
+              <button class="btn btn-info" [routerLink]="['/usuariogestion', usuario.idusuario,0 ]">
+        <i class="fa fa-pencil"></i>
+      </button>
+              <button class="btn btn-primary" [routerLink]="['/usuariogestion', usuario.idusuario,1 ]">
+          <i class="fa fa-folder"></i>
+        </button>
+          </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+<div *ngIf="!cargando && usuarios.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">No hay registros</h4>
+  <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+  </p>
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+      <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+      Espere por favor
+  </p>
+</div>

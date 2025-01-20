@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="vitabella_usa.jpg" width="40" height="40" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Configuracion
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#/usuario">Usuarios</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+             <li><a class="dropdown-item" href="#/producto">Productos</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#/marca">Marcas</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#/clasificacion">Clasificacion</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#/plandecuenta">Planes de cuenta</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Compras
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#/compra/0">Comprar</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#/compralista">Lista compras</a></li>
+            <li><a class="dropdown-item" href="#/proveedor">Proveedores</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+
+          </ul>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{usuario}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><input type="text" class="form-control" [(ngModel)]="usuario" name="nombreusuario"
+                disabled="disabled" /></li>
+                <li> <input type="text" class="form-control" [(ngModel)]="nombreoficina" name="nombreoficina"
+                  disabled="disabled" /></li>
+            <!-- <li> <input type="text" class="form-control" [(ngModel)]="nombregrupo" name="nombregrupo"
+                disabled="disabled" />
+            <li></li>
+
+            <li> <input type="text" class="form-control" [(ngModel)]="VERSION" name="idrol" disabled="disabled" /></li> -->
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#/login">Ingresar</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#/logincambiopass">Cambio Contraseña</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#/salir">Salir</a></li>
+
+
+          </ul>
+        </li>
+      </ul>
+      <!-- <span class="navbar-text">
+        {{usuario}}
+      </span> -->
+      <form class="d-flex" role="search">
+        <a href="#/salir" class="btn btn-outline-warning" role="button" aria-pressed="true">Salir</a>
+      </form>
+    </div>
+  </div>
+</nav>

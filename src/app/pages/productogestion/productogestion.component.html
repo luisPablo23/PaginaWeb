@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-sm-8">
+      <h1>Datos del producto</h1>
+  </div>
+  <div class="col-sm-4 text-right">
+      <h1> <button class="btn btn-danger" routerLink="/producto">
+              <i class="fa fa-arrow-left"></i>
+              Regresar
+          </button></h1>
+  </div>
+</div>
+
+<form autocomplete="off" (ngSubmit)="guardar( forma )" #forma="ngForm">
+
+  <div class="row g-2">
+       <div class="col-md">
+          <div class="form-floating">
+              <select class="form-control" name="idmarca" [ngModel]="producto.idmarca" required
+                  (change)="changeidmarca($event)">
+                  <option *ngFor="let itemmarca of marcalista" [value]="itemmarca.idmarca">
+                      {{ itemmarca.nombremarca }}
+                  </option>
+              </select>
+              <label for="idmarca">Marca</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" [(ngModel)]="producto.codigobarra1" name="codigobarra1" required>
+              <label for="codigobarra1">Codigo :</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating">
+              <input type="text" class="form-control" [(ngModel)]="producto.nombreproducto"
+                  name="nombreproducto" required>
+              <label for="nombreproducto">Nombre :</label>
+          </div>
+      </div>
+  </div>
+  <div class="row g-2">
+      <div class="col-md">
+          <div class="form-floating">
+              <select class="form-control" name="idclasificacionproducto" [ngModel]="producto.idclasificacionproducto" required
+                  (change)="changeidclasificacionproducto($event)">
+                  <option *ngFor="let item of clasificacionproductolista" [value]="item.idclasificacionproducto">
+                      {{ item.nombreclasificacionproducto }}
+                  </option>
+              </select>
+              <label for="idclasificacionproducto">Clasificacion</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating mb-3">
+              <input type="text" class="form-control" [(ngModel)]="producto.montocompra" name="montocompra">
+              <label for="montocompra">Precio Compra :</label>
+          </div>
+      </div>
+      <div class="col-md">
+          <div class="form-floating">
+              <input type="text" class="form-control" [(ngModel)]="producto.montoventa"
+                  name="montoventa" required>
+              <label for="montoventa">Precio Venta :</label>
+          </div>
+      </div>
+  </div>
+  <br />
+
+  <div class="form-group row text-center">
+      <div class="col">
+          <button type="submit" class="btn btn-primary w-25">
+              <i class="fa fa-save"></i>
+              Guardar
+          </button>
+      </div>
+  </div>
+</form>

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-8">
+      <h1>Datos de la marca</h1>
+  </div>
+  <div class="col-sm-4 text-right">
+      <h1> <button class="btn btn-danger" routerLink="/marca">
+              <i class="fa fa-arrow-left"></i>
+              Regresar
+          </button></h1>
+  </div>
+</div>
+
+<form autocomplete="off" (ngSubmit)="guardar( forma )" #forma="ngForm">
+<!-- <div class="col-md">
+          <div class="form-floating">
+              <select class="form-control" name="idmarca" [ngModel]="marca.idmarca" required
+                  (change)="changeidmarca($event)">
+                  <option *ngFor="let item of marcalista" [value]="item.idmarca">
+                      {{ item.nombremarca }}
+                  </option>
+              </select>
+              <label for="idmarca">Marca</label>
+          </div>
+      </div> -->
+  <div class="row g-2">
+
+
+      <div class="col-md">
+          <div class="form-floating">
+              <input type="text" class="form-control" [(ngModel)]="marca.nombremarca"
+                  name="nombremarca" required>
+              <label for="nombremarca">Nombre :</label>
+          </div>
+      </div>
+  </div>
+
+  <br />
+
+  <div class="form-group row text-center">
+      <div class="col">
+          <button type="submit" class="btn btn-primary w-25">
+              <i class="fa fa-save"></i>
+              Guardar
+          </button>
+      </div>
+  </div>
+</form>
